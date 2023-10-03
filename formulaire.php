@@ -1,20 +1,3 @@
-<?php
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if(!isset($_POST['firstname']) || trim($_POST['firstname']) === '') 
-        $errors[] = "Le prénom est obligatoire";
-    if(!isset($_POST['lastname']) || trim($_POST['lastname']) === '') 
-        $errors[] = "Le nom est obligatoire";
-    if(!isset($_POST['phone_number']) || trim($_POST['phone_number']) === '') 
-        $errors[] = "Le numero de telephone est obligatoire";
-    if(filter_var(!isset($_POST['user_mail'])) || filter_var(trim($_POST['user_mail'])) === '') 
-        $errors[] = "Votre email est obligatoire";
-
-    if(empty($errors)) {
-        header('Location: thanks.php');
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,19 +9,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form action="thanks.php" method="post">
         <div>
             <label for="firtsname">Firstname</label>
-            <input type="text" id='firstname' name='user_firstname' />
+            <input type="text" id='firstname' name='user_firstname' required>
         </div>
         <div>
             <label for="lastsname">Lastname</label>
-            <input type="text" id='lastname' name='user_lastname' />
+            <input type="text" id='lastname' name='user_lastname' required>
         <div>
         <div>
             <label for="email">Mail</label>
-            <input type="text" id='mail' name='user_mail' />
+            <input type="text" id='mail' name='user_mail' required>
         </div>
         <div>
             <label for="phone_number">n°:</label>
-            <input type="text" id= 'number' name='phone_number'>
+            <input type="text" id= 'number' name='phone_number' required>
         </div>
         <label for="pet-select">Problematique</label>
             <select name="probleme" id="problem-select">
@@ -52,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         </select><br>
 
             <label for="message">Message</label>
-            <textarea name="user_message" id="message"></textarea>
+            <textarea name="user_message" id="message" required></textarea>
 
         <div class = "button">   
             <button type="Submit">Send</button>

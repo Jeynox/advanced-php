@@ -1,3 +1,20 @@
+<?php
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(!isset($_POST['firstname']) || trim($_POST['firstname']) === '') 
+        $errors[] = "Le prénom est obligatoire";
+    if(!isset($_POST['lastname']) || trim($_POST['lastname']) === '') 
+        $errors[] = "Le nom est obligatoire";
+    if(!isset($_POST['phone_number']) || trim($_POST['phone_number']) === '') 
+        $errors[] = "Le numero de telephone est obligatoire";
+    if(filter_var(!isset($_POST['user_mail'])) || filter_var(trim($_POST['user_mail'])) === '') 
+        $errors[] = "Votre email est obligatoire";
+
+    if(empty($errors)) {
+        header('Location: thanks.php');
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
